@@ -1,0 +1,50 @@
+.service-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.service-heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 43px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    margin-bottom: 15px;
+}
+
+.service-card {
+    margin: 20px auto;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.service-card:hover {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.1);
+    text-decoration: none!important;
+}
+.no-underline{
+    text-decoration:none!important;
+}
+.no-underline:hover{
+    text-emphasis: none!important;
+}
+.service-card-title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    color: #111430;
+}
+
+.service-card-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.396px;
+    color: rgba(0, 0, 0, 0.7);
+}

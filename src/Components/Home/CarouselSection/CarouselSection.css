@@ -1,0 +1,16 @@
+.carousel-section {
+    background: #111430;
+    margin: 70px 0;
+    padding: 70px 50px 70px 50px
+}
+
+.carousel-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 43px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    color: #FFFFFF;
+    margin: 30px auto 45px auto;
+}

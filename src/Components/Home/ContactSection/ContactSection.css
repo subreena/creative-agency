@@ -1,0 +1,30 @@
+.contact-section {
+    padding-top: 50px;
+    padding-bottom: 10px;
+}
+
+.contact-section-title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 43px;
+    letter-spacing: 0.396px;
+    color: #2D2D2D;
+}
+
+.contact-section-text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0.396px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.contact-input {
+    height: 50px!important;
+}
+
+.contact-textarea {
+    height: 250px!important;
+}

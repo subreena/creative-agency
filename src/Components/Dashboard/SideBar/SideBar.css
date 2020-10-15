@@ -1,0 +1,15 @@
+.sidebar{
+    background: #fff;
+    padding-top: 10px;
+}
+.sidebar-link{
+    font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 24px;
+
+}
+.sidebar-link:hover , .sidebar-link:active{
+    color: #009444!important;
+}

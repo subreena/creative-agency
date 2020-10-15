@@ -1,0 +1,10 @@
+footer p {
+    font-style: normal;
+    font-weight: 300;
+    margin-top: 20px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    color: rgba(0, 0, 0, 0.7);
+}
