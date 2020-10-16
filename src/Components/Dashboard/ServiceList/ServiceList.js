@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../../App';
 import AdminService from './AdminService';
 import ClientServiceList from './ClientServiceList';
-import {Ripple} from 'react-preloaders'
 
 const ServiceList = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);

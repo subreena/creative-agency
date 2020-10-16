@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ClientCard from './ClientCard';
-import ClientData from './ClientData';
 import './ClientSection.css'
 const ClientSection = () => {
     const [clients , setClients] = useState([]);

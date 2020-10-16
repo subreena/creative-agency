@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button, ButtonGroup, Dropdown, Table } from 'react-bootstrap';
 const AdminService = () => {
     const [adminService, setAdminService] = useState([])
     const [status, setStatus] = useState("Pending");
-    const handleStatus = (status, id) => {
-      
+    const handleStatus = (status, id) => {    
         setStatus(status);
         fetch(`https://nameless-shelf-03440.herokuapp.com/updateOrders`,{
             method: 'PATCH',
@@ -14,12 +12,9 @@ const AdminService = () => {
         })
         .then(res => res.json())
         .then(data => {
-            // const selectedOrder = data.find(order => id===order._id);
-            // console.log(selectedOrder);
             console.log("updated");
         })
-        alert("Status updated successfully.");
-       
+        alert("Status updated successfully.");      
     }
 
     useEffect(() => {
@@ -59,9 +54,9 @@ const AdminService = () => {
                                         <Dropdown.Toggle split variant="" id="dropdown-split-basic" />
 
                                         <Dropdown.Menu>
-                                            <Dropdown.Item href="" onClick={() => {handleStatus("Pending", service._id)}}><span to="/login" className="text-danger">Pending</span></Dropdown.Item>
-                                            <Dropdown.Item href=""  onClick={() => {handleStatus("On going", service._id)}}><span to="/login" className="text-warning">On going</span></Dropdown.Item>
-                                            <Dropdown.Item href=""  onClick={() => {handleStatus("Done", service._id)}}><span to="/login" className="text-success">Done</span></Dropdown.Item>
+                                            <Dropdown.Item href="" onClick={() => {handleStatus("Pending", service._id)}}><span  className="text-danger">Pending</span></Dropdown.Item>
+                                            <Dropdown.Item href=""  onClick={() => {handleStatus("On going", service._id)}}><span  className="text-warning">On going</span></Dropdown.Item>
+                                            <Dropdown.Item href=""  onClick={() => {handleStatus("Done", service._id)}}><span  className="text-success">Done</span></Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                             </td>

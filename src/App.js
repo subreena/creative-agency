@@ -7,7 +7,6 @@ import Login from './Components/Login/Login';
 import PrivateRoute from './Components/Login/PrivateRoute';
 import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import NoMatch from './Components/NoMatch/NoMatch';
-import ServiceList from './Components/Dashboard/ServiceList/ServiceList';
 import AddService from './Components/Dashboard/AddService/AddService';
 import AddAdmin from './Components/Dashboard/AddAdmin/AddAdmin';
 import Review from './Components/Dashboard/Review/Review';
@@ -21,9 +20,6 @@ function App() {
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
         <Router>
           <Switch>
-            <Route exact path="/">
-              <Home></Home>
-            </Route>
             <Route exact path="/login">
               <Login></Login>
             </Route>
@@ -48,7 +44,10 @@ function App() {
             <PrivateRoute path="/dashboard/review">
               <Review></Review>
             </PrivateRoute>
-            <Route path="*">
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route exact path="*">
               <NoMatch></NoMatch>
             </Route>
           </Switch>

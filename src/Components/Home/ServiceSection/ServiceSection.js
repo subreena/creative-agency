@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import { useSpring, animated } from 'react-spring'
 import {Ripple} from 'react-preloaders'
 import './ServiceSection.css'
@@ -29,7 +29,7 @@ const ServiceSection = () => {
                 </h2>
                 <div className="row mt-5">
                     {
-                        services.map((service) => <div className="col-6 col-md-4" >
+                        services.map((service) => <div className="col-6 col-md-4" key={service._id} >
                             <Link to={`/dashboard/order/${service.service}`}  class="no-underline">
                                 <div className="service-card">
                                     

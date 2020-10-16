@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import SideBar from '../SideBar/SideBar';
 import '../Dashboard.css';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { UserContext } from '../../../App';
 
 const Review = () => {
    const [loggedInUser, setLoggedInUser] = useContext(UserContext)
-   const { register, handleSubmit, watch, errors } = useForm();
+   const { register, handleSubmit, errors } = useForm();
    const history = useHistory();
     const [review , setReview] = useState({
         name: loggedInUser.displayName,
@@ -48,16 +48,19 @@ const Review = () => {
                         <div className="form-group">
                            {
                                loggedInUser.displayName?
-                               <input type="text" placeholder={`${loggedInUser.displayName}`} className="contact-input form-control" />
+                               <input type="text" name="name" placeholder={`${loggedInUser.displayName}`} className="contact-input form-control" />
                                :
-                               <input type="text" placeholder="Name" className="contact-input form-control" />
+                               <input type="text" name="name" onBlur={handleBlur} ref={register({ required: true })} placeholder="Name" className="contact-input form-control" />
                            }
+                            {errors.name && <span className="error text-danger">Field is required</span>}
                         </div>
                         <div className="form-group">
                             <input type="text"onBlur={handleBlur} placeholder="Company's name , Designation" name="description" className="contact-input form-control" />
+                            {errors.description && <span className="error text-danger">Field is required</span>}
                         </div>
                        <div className="form-group">
-                       <textarea onBlur={handleBlur} className="form-control" name="message" placeholder="Enter Description" style={{ height: '150px' }}></textarea>
+                       <textarea onBlur={handleBlur} ref={register({ required: true })} className="form-control" name="message" placeholder="Enter Description" style={{ height: '150px' }}></textarea>
+                       {errors.message && <span className="error text-danger">Field is required</span>}
                        </div>
                         <div className="form-group">
                             <button className="blueBtn">Submit</button>

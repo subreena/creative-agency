@@ -4,7 +4,7 @@ const Footer = () => {
     return (
      <footer>
          <p>
-         2020 Copyright| Made By Subreena 
+         2020 Copyright | Made By Subreena 
          </p>
      </footer>       
     );

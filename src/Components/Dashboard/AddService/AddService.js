@@ -4,12 +4,12 @@ import '../Dashboard.css';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 import { UserContext } from '../../../App';
 const AddService = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [file, setFile] = useState(null);
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit,  errors } = useForm();
 
     const history = useHistory();
     const handleFileChange = (e) => {
@@ -59,7 +59,7 @@ const AddService = () => {
                     <div className="form-group">
                     <label className="font-weight-bold">Service Title</label><br/>
                 <input name="service" className="form-control contact-input" ref={register({ required: true })} placeholder="Enter title" />
-                {errors.service && <span className="error">Service Title is required</span>}
+                {errors.service && <span className="error text-danger">Service Title is required</span>}
                     </div>
                 </div>
 
@@ -67,7 +67,7 @@ const AddService = () => {
                    <div className="form-group">
                    <label className="font-weight-bold">Icon</label><br/>
                 <input onChange={handleFileChange} type="file" name="file" className="form-control contact-input" ref={register({ required: true })} placeholder="Upload Image" />
-                {errors.file && <span className="error">Service Title is required</span>}
+                {errors.file && <span className="error text-danger">Service Title is required</span>}
                 
                    </div>
                </div>
@@ -77,7 +77,7 @@ const AddService = () => {
                <div className="form-group">
                 <label className="font-weight-bold mt-2">Description</label>
                 <textarea name="summary" type="text" rows="3" className="form-control" style={{height: '120px'}} ref={register({ required: true })} placeholder="Project Details" ></textarea>
-                {errors.summary && <span className="error">Project Details is required</span>}
+                {errors.summary && <span className="error text-danger">Project Details is required</span>}
                 </div>
                </div>
 
