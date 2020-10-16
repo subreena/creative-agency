@@ -31,7 +31,7 @@ const Login = () => {
             email: email ,
             photoURL: photoURL ,
         }
-        // setUserToken();
+        setUserToken();
         setLoggedInUser(signedInUser);
         history.replace(from);
       })
@@ -44,28 +44,26 @@ const Login = () => {
 
 }
 
-// setting user token
-// const setUserToken = () => {
-//     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
-//     .then(function(idToken) {
-//       sessionStorage.setItem('token' , idToken);
-//       // ...
-//     }).catch(function(error) {
-//       // Handle error
-//     });
-//   }
+// sving user in session storage
+const setUserToken = () => {
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
+    .then(function(idToken) {
+      sessionStorage.setItem('token' , idToken);
+      // ...
+    }).catch(function(error) {
+      // Handle error
+    });
+  }
 
 
     return (
       <div className="login-section">
           <div className="container">
-            
-             <div className="d-flex justify-content-center mb-5">
              <Link to="/">
+             <div className="d-flex justify-content-center mb-5">
              <img src={logo} alt="" style={{width: "150px", height: "47px", marginBottom: "40px"}}/>
-             </Link>
              </div>
-            
+             </Link>
               <div className="d-flex justify-content-center ">
                   <div className="login-box">
                       <div>

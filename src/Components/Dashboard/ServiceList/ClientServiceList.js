@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { UserContext } from '../../../App';
 
 const ClientServiceList = () => {
+    const {email} = useParams();
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [servicesList, setServicesList] = useState([]);
 
    useEffect(() =>{
-       fetch(`https://nameless-shelf-03440.herokuapp.com/userAddedService/`+ loggedInUser.email)
+       fetch(`https://nameless-shelf-03440.herokuapp.com/userAddedService/`+ email)
        .then(response => response.json())
        .then(data=>{
            setServicesList(data);

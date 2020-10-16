@@ -11,7 +11,7 @@ const PrivateRoute = ({ children, ...rest }) => {
       render = {({ 
           location 
         }) =>
-        loggedInUser.email
+        (loggedInUser.email || sessionStorage.getItem('token')) 
          ? (
           children
         ) : (
