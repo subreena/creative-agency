@@ -8,14 +8,22 @@ const Order = () => {
     const history = useHistory();
     const[loggedInUser , setLoggedInUser] = useContext(UserContext)
     const [allService , setAllService] = useState([]);
+    const [file , setFile] = useState(null)
     const { register, handleSubmit, watch, errors } = useForm();
-    const [price, setprice] = useState({ price: '' , status: 'pending'})
+    const [details, setDetails] = useState({
+        email: loggedInUser.email,
+        displayName: loggedInUser.displayName,
+        service: service,
+        summary: '',
+        price: '',
+        status: 'pending'
+    })
     const handleBlur = (e) =>{
-        const newPrice = { ...price };
-        newPrice[e.target.name] = e.target.value;
-        setprice(newPrice);
+        const newDetails = { ...details};
+        newDetails[e.target.name] = e.target.value;
+        setDetails(newDetails)
+       
     }
-
   useEffect(() => {
     fetch('https://nameless-shelf-03440.herokuapp.com/allService' , {
         method: 'GET',
@@ -29,15 +37,16 @@ const Order = () => {
   },[])
 //   gettingServiceName
 const addedService = allService.find(all => service === all.service );
-
-  //   getting project description
+if(addedService !== undefined){
+  details.summary = addedService.summary;
+  
+}
 
     
 
   
-//   ORDER SUBMIT
 const onSubmit = (e) => {  
-    const data ={...addedService , ...loggedInUser , ...price}
+    const data ={...addedService , ...details}
     console.log(data);
     fetch('https://nameless-shelf-03440.herokuapp.com/userAddedService' , {
         method: 'POST',
@@ -47,8 +56,16 @@ const onSubmit = (e) => {
           body: JSON.stringify(data)
     })
     
-    history.push(`/dashboard/service-list/${loggedInUser.email}`)
-
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+    })
+    .catch(error => {
+        console.error(error)
+    })
+alert("Order Placed Successfully");    
+history.push(`/dashboard/service-list/${details.email}`)
+  
 }
     return (
      <div className="container-fluid">
@@ -67,34 +84,34 @@ const onSubmit = (e) => {
                         <div className="form-group" >
                            {
                                loggedInUser.email ?
-                               <input type="text" placeholder={`${loggedInUser.email}`} className="contact-input form-control" />
+                               <input type="text" name="email" placeholder={`${loggedInUser.email}`} className="contact-input form-control" readOnly />
                                :
-                               <input type="text" placeholder="Your email adress" className="contact-input form-control" />
+                               <input type="text"  name="email" onBlur={handleBlur} placeholder="Your email adress" className="contact-input form-control" />
                            }
 
                         </div>
                         <div className="form-group">
                             {
                                 loggedInUser.displayName ?
-                                <input type="text" placeholder={`${loggedInUser.displayName}`} className="contact-input form-control" />
+                                <input type="text" name="displayName"  placeholder={`${loggedInUser.displayName}`} className="contact-input form-control" />
                                :
-                               <input type="text" placeholder="Your name/ Company's name" className="contact-input form-control" />
+                               <input type="text"name="displayName"  onBlur={handleBlur} placeholder="Your name/ Company's name" className="contact-input form-control" />
                             }
                         </div>
                         <div className="form-group">
                             {
                                 service ?
-                                <input type="text" placeholder={`${service}`} className="contact-input form-control" />
+                                <input type="text" name="service" value={`${service}`} placeholder={`${service}`} className="contact-input form-control" readOnly/>
                                 :
-                                <input type="text" placeholder="Service" className="contact-input form-control" />
+                                <input type="text" name="service"  onBlur={handleBlur} placeholder="Service" className="contact-input form-control" />
                             }
                         </div>
                         <div className="form-group">
                            {
                                addedService !== undefined ?
-                               <textarea type="text" placeholder={`${addedService.summary}`} style={{height: '100px'}} className=" form-control"></textarea>
+                               <textarea type="text" name="summary" value={`${addedService.summary}`} placeholder={`${addedService.summary}`} style={{height: '100px'}} className=" form-control" readOnly></textarea>
                                :
-                               <input type="text" placeholder="Project Details" className="contact-input form-control" />
+                               <input type="text" name="summary" onBlur={handleBlur} placeholder="Project Details" className="contact-input form-control" />
                            }
                         </div>
                         <div className="row">
@@ -104,9 +121,10 @@ const onSubmit = (e) => {
                                 </div>
                             </div>
                             <div className="col-6">
-                                <button className="dashboard-btn w-100">
+                                <button className="dashboard-btn w-100" >
                                     <i class="fa fa-upload" aria-hidden="true"></i> Upload Project File
                                     </button>
+                                
                             </div>
                         </div>
                         <button className="blueBtn" >Send</button>

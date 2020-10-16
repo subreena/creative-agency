@@ -25,14 +25,14 @@ const SideBar = () => {
 
             <Navbar bg="none" expand="lg" className="blue-text">
                 <div className="d-lg-flex flex-lg-column flex-sm-row">
-                    <Link to="/"><Navbar.Brand href="/">
+                  <Navbar.Brand href="/">
                         <img src={logo} alt="" className="img-fluid" style={{ width: "150px", height: "47px", marginBottom: '20px' }} />
-                    </Navbar.Brand></Link>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="d-lg-flex flex-lg-column ml-auto">
                             {/* if admin */}
-                            {admin ? 
+                            {admin ?
                                 (
                                     <>
                                         <Link to="/dashboard/service-list">
@@ -61,11 +61,11 @@ const SideBar = () => {
                                                 <i class="fa fa-shopping-bag mr-1" aria-hidden="true"></i> Service List
                         </Nav.Link>
                                         </Link>
-                        <Link to="/dashboard/order">
-                        <Nav.Link href="/dashboard/order" className="mr-2 font-weight-bold blue-text sidebar-link active" >
+                                        <Link to="/dashboard/order">
+                                            <Nav.Link href="/dashboard/order" className="mr-2 font-weight-bold blue-text sidebar-link active" >
                                                 <i class="fa fa-cart-plus mr-1 active" aria-hidden="true"></i> Order
                         </Nav.Link>
-                        </Link>
+                                        </Link>
                                         <Link to="/dashboard/review">
                                             <Nav.Link href="/dashboard/review" className="mr-2 font-weight-bold blue-text sidebar-link" >
                                                 <i class="fa fa-commenting mr-1" aria-hidden="true"></i> Review
